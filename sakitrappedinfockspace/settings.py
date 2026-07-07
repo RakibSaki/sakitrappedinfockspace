@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.environ.get('WEBSITE_HOSTNAME', '')]
 
+if 'WEBSITE_HOSTNAME' in os.environ:
+    CSRF_TRUSTED_ORIGINS = [f"https://{os.environ.get('WEBSITE_HOSTNAME')}"]
+else:
+    CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://127.0.0.1:8000"]
 
 # Application definition
 
